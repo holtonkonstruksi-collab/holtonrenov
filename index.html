@@ -12,6 +12,7 @@
       --secondary: #212121; /* Hitam */
       --success: #4CAF50; /* Hijau */
       --danger: #F44336; /* Merah */
+      --info: #2196F3; /* Biru */
       --light: #f8f9fa;
       --dark: #212121;
       --gray: #6c757d;
@@ -51,11 +52,12 @@
       background: var(--primary);
     }
     header { 
-      text-align: center; 
-      margin-bottom: 30px; 
-      padding-bottom: 20px; 
-      border-bottom: 2px solid var(--light-gray);
+      background: var(--secondary);
+      color: var(--white);
+      padding: 25px 30px; 
+      margin: -30px -30px 30px -30px;
       position: relative;
+      text-align: center;
     }
     .logo {
       display: flex;
@@ -63,16 +65,25 @@
       justify-content: center;
       margin-bottom: 15px;
     }
-    .logo i {
-      font-size: 40px;
-      color: var(--primary);
+    .logo img {
+      height: 60px;
       margin-right: 15px;
     }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
     h1 { 
-      color: var(--secondary); 
+      color: var(--white); 
       font-size: 32px; 
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       font-weight: 700;
+    }
+    .tagline {
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 500;
     }
     h2, h3, h4 { 
       margin: 20px 0 15px; 
@@ -89,7 +100,7 @@
       color: var(--primary);
     }
     p.subtitle { 
-      color: var(--gray); 
+      color: var(--white); 
       font-size: 16px; 
       margin-bottom: 20px;
       max-width: 80%;
@@ -116,6 +127,20 @@
       outline: none; 
       border-color: var(--primary); 
       box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+    }
+    .input-group {
+      position: relative;
+    }
+    .input-prefix {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+      font-weight: 600;
+    }
+    .input-with-prefix {
+      padding-left: 35px;
     }
     .checkbox-group { 
       display: flex; 
@@ -198,6 +223,49 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
+    .btn-print {
+      background: var(--info);
+      color: var(--white);
+    }
+    .btn-print:hover {
+      background: #0d8aee;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .btn-email {
+      background: var(--gray);
+      color: var(--white);
+    }
+    .btn-email:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .btn-share {
+      background: var(--primary);
+      color: var(--secondary);
+    }
+    .btn-share:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .btn-add {
+      background: var(--success);
+      color: var(--white);
+    }
+    .btn-add:hover {
+      background: #388E3C;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .btn-delete {
+      background: var(--danger);
+      color: var(--white);
+    }
+    .btn-delete:hover {
+      background: #d32f2f;
+    }
     .result-box { 
       background: var(--light-gray); 
       padding: 25px; 
@@ -205,14 +273,20 @@
       margin-top: 25px; 
       border-left: 4px solid var(--primary);
     }
-    .tukang-row { 
+    .expense-row { 
       display: flex; 
       gap: 10px; 
       margin-bottom: 15px; 
       align-items: end;
     }
-    .tukang-row input { 
+    .expense-row input { 
       flex: 1; 
+    }
+    .expense-row .date-input {
+      flex: 0.8;
+    }
+    .expense-row .amount-input {
+      flex: 0.8;
     }
     .btn-remove { 
       background: var(--danger); 
@@ -311,12 +385,41 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     footer { 
-      margin-top: 30px; 
+      background: var(--secondary);
+      color: var(--white);
+      padding: 25px 30px; 
+      margin: 30px -30px -30px -30px;
       text-align: center; 
-      color: var(--gray); 
       font-size: 14px; 
-      padding-top: 20px; 
       border-top: 1px solid var(--light-gray);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    .footer-logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .footer-address {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .footer-contact {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .footer-contact a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-contact a:hover {
+      text-decoration: underline;
     }
     .project-controls { 
       display: flex; 
@@ -493,6 +596,54 @@
       visibility: visible;
       opacity: 1;
     }
+    .expense-summary {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .summary-item {
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      background: var(--light-gray);
+      flex: 1;
+      margin: 0 5px;
+    }
+    .summary-item h4 {
+      margin: 0 0 5px;
+      font-size: 14px;
+      color: var(--gray);
+    }
+    .summary-item p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    .summary-item.positive p {
+      color: var(--success);
+    }
+    .summary-item.negative p {
+      color: var(--danger);
+    }
+    .expense-filter {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .expense-filter select {
+      margin-bottom: 0;
+      flex: 1;
+    }
+    .expense-chart {
+      height: 300px;
+      margin: 20px 0;
+    }
+    .chart-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
     @media (max-width: 768px) {
       .container {
         padding: 20px;
@@ -509,12 +660,31 @@
       .btn {
         width: 100%;
       }
-      .tukang-row {
+      .expense-row {
         flex-direction: column;
         gap: 10px;
       }
-      .tukang-row input {
+      .expense-row input {
         margin-bottom: 10px;
+      }
+      .expense-summary {
+        flex-direction: column;
+      }
+      .summary-item {
+        margin: 5px 0;
+      }
+    }
+    @media print {
+      body { padding: 0; }
+      .container { 
+        box-shadow: none; 
+        padding: 20px;
+      }
+      .tab-buttons, .btn-group, .toast, .loading {
+        display: none !important;
+      }
+      .tab-content {
+        display: block !important;
       }
     }
   </style>
@@ -529,8 +699,11 @@
   <div class="container">
     <header>
       <div class="logo">
-        <i class="fas fa-home"></i>
-        <h1>HoltonRenov Planner</h1>
+        <img src="https://i.imgur.com/k3xvY5b.png" alt="Holton Logo">
+        <div class="logo-text">
+          <h1>HoltonRenov Planner</h1>
+          <div class="tagline">Solusi Perencanaan Renovasi Terpercaya</div>
+        </div>
       </div>
       <p class="subtitle">Alat Perencanaan Renovasi Rumah 36m² — <strong>Holton Konstruksi</strong></p>
       <p><em>Mulai dari atap ke lantai, dari dalam ke luar, dengan estimasi biaya & manajemen tukang terintegrasi.</em></p>
@@ -549,6 +722,9 @@
         </button>
         <button class="tab-button" onclick="openTab(event, 'tukang-tab')">
           <i class="fas fa-users"></i> Tukang
+        </button>
+        <button class="tab-button" onclick="openTab(event, 'pengeluaran-tab')">
+          <i class="fas fa-money-bill-wave"></i> Pengeluaran
         </button>
         <button class="tab-button" onclick="openTab(event, 'hasil-tab')">
           <i class="fas fa-chart-bar"></i> Hasil
@@ -583,6 +759,7 @@
             <option value="bandung">Bandung</option>
             <option value="surabaya">Surabaya</option>
             <option value="medan">Medan</option>
+            <option value="semarang">Semarang</option>
             <option value="custom">Lainnya</option>
           </select>
           <div id="custom-lokasi" style="display:none;">
@@ -676,7 +853,10 @@
           <div id="tukang-list">
             <div class="tukang-row">
               <input type="text" placeholder="Nama Tukang" class="tukang-nama">
-              <input type="number" placeholder="Upah/Hari (Rp)" class="tukang-upah" value="150000">
+              <div class="input-group">
+                <span class="input-prefix">Rp</span>
+                <input type="text" placeholder="Upah/Hari" class="tukang-upah input-with-prefix" value="150000" oninput="formatRupiah(this)">
+              </div>
               <input type="number" placeholder="Hari Kerja" class="tukang-hari" value="15">
               <button class="btn-remove" onclick="this.parentElement.remove()">
                 <i class="fas fa-times"></i>
@@ -686,6 +866,78 @@
           <button class="btn-add" onclick="addTukang()">
             <i class="fas fa-plus"></i> Tambah Tukang
           </button>
+        </div>
+      </div>
+
+      <div id="pengeluaran-tab" class="tab-content">
+        <!-- Pengeluaran Aktual -->
+        <div class="section">
+          <h2><i class="fas fa-money-bill-wave"></i> Manajemen Pengeluaran Aktual</h2>
+          
+          <!-- Ringkasan Pengeluaran -->
+          <div class="expense-summary">
+            <div class="summary-item">
+              <h4>Anggaran Total</h4>
+              <p id="budget-total">Rp 0</p>
+            </div>
+            <div class="summary-item">
+              <h4>Terpakai</h4>
+              <p id="expense-used" class="negative">Rp 0</p>
+            </div>
+            <div class="summary-item">
+              <h4>Sisa Anggaran</h4>
+              <p id="budget-remaining" class="positive">Rp 0</p>
+            </div>
+          </div>
+          
+          <!-- Filter Pengeluaran -->
+          <div class="expense-filter">
+            <select id="expense-category-filter">
+              <option value="">Semua Kategori</option>
+              <option value="material">Material</option>
+              <option value="tukang">Upah Tukang</option>
+              <option value="alat">Peralatan</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+            <select id="expense-date-filter">
+              <option value="">Semua Waktu</option>
+              <option value="7">7 Hari Terakhir</option>
+              <option value="30">30 Hari Terakhir</option>
+              <option value="custom">Rentang Tanggal</option>
+            </select>
+          </div>
+          
+          <!-- Daftar Pengeluaran -->
+          <div id="expense-list">
+            <div class="expense-row">
+              <input type="date" class="date-input" value="${new Date().toISOString().split('T')[0]}">
+              <input type="text" placeholder="Deskripsi Pengeluaran" class="expense-desc">
+              <div class="input-group">
+                <span class="input-prefix">Rp</span>
+                <input type="text" placeholder="Jumlah" class="amount-input input-with-prefix" oninput="formatRupiah(this)">
+              </div>
+              <select class="expense-category">
+                <option value="material">Material</option>
+                <option value="tukang">Upah Tukang</option>
+                <option value="alat">Peralatan</option>
+                <option value="lainnya">Lainnya</option>
+              </select>
+              <button class="btn-remove" onclick="this.parentElement.remove()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addExpense()">
+            <i class="fas fa-plus"></i> Tambah Pengeluaran
+          </button>
+          
+          <!-- Grafik Pengeluaran -->
+          <div class="expense-chart">
+            <h3>Grafik Pengeluaran per Kategori</h3>
+            <div class="chart-container">
+              <canvas id="expense-chart-canvas"></canvas>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -716,11 +968,28 @@
     </div>
 
     <footer>
-      <p>© 2025 Holton Konstruksi — Mitra Renovasi Terpercaya</p>
-      <p><em>HoltonRenov Planner v2.1 • Simpan, Rencanakan, Eksekusi dengan Percaya Diri</em></p>
+      <div class="footer-logo">
+        <img src="https://i.imgur.com/k3xvY5b.png" alt="Holton Logo">
+        <span style="font-weight: 700; font-size: 18px;">Holton Konstruksi</span>
+      </div>
+      <div class="footer-address">
+        <i class="fas fa-map-marker-alt"></i> Jl. Padma Boulevard B1, Graha Padma Estate, Semarang
+      </div>
+      <div class="footer-contact">
+        <a href="tel:+628112770199"><i class="fas fa-phone"></i> 0811-2770-199</a>
+        <a href="mailto:info@holtonkonstruksi.com"><i class="fas fa-envelope"></i> info@holtonkonstruksi.com</a>
+        <a href="https://www.holtonkonstruksi.com" target="_blank"><i class="fas fa-globe"></i> www.holtonkonstruksi.com</a>
+      </div>
+      <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">
+        © 2025 Holton Konstruksi — Mitra Renovasi Terpercaya
+      </p>
+      <p style="font-size: 12px; opacity: 0.8;">
+        <em>HoltonRenov Planner v2.1 • Simpan, Rencanakan, Eksekusi dengan Percaya Diri</em>
+      </p>
     </footer>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // ========== DATABASE PEKERJAAN ==========
     const dataPekerjaan = {
@@ -737,12 +1006,31 @@
       cat: { nama: "Pengecatan Akhir", per_m2: true, material: [{ nama: "Cat tembok premium", satuan: "liter", harga: 120000, kebutuhan: 0.12 }, { nama: "Plamir tembok", satuan: "kg", harga: 25000, kebutuhan: 1.5 }, { nama: "Amplas halus", satuan: "lembar", harga: 2000, kebutuhan: 2 }], peralatan: ["Roller cat", "Kuas", "Wadah cat", "Masker respirator"], durasi: 4 }
     };
 
-    const faktorLokasi = { jakarta: 1.0, bandung: 0.9, surabaya: 0.85, medan: 0.8, default: 0.85 };
+    const faktorLokasi = { 
+      jakarta: 1.0, 
+      bandung: 0.9, 
+      surabaya: 0.85, 
+      medan: 0.8, 
+      semarang: 0.85,
+      default: 0.85 
+    };
     const URUTAN_PRIORITAS = ["atap", "plumbing", "listrik", "plafond", "dinding", "kusen", "lantai", "kanopi", "taman", "pagar", "cat"];
+
+    // ========== GLOBAL VARIABLES ==========
+    let expenseChart = null;
+    let totalBudget = 0;
 
     // ========== DOM EVENTS ==========
     document.getElementById('lokasi').addEventListener('change', function() {
       document.getElementById('custom-lokasi').style.display = this.value === 'custom' ? 'block' : 'none';
+    });
+
+    document.getElementById('expense-category-filter').addEventListener('change', function() {
+      filterExpenses();
+    });
+
+    document.getElementById('expense-date-filter').addEventListener('change', function() {
+      filterExpenses();
     });
 
     // ========== FUNGSI UTILITAS ==========
@@ -761,6 +1049,11 @@
       
       document.getElementById(tabName).classList.add("active");
       evt.currentTarget.classList.add("active");
+      
+      // Update chart when opening expense tab
+      if (tabName === 'pengeluaran-tab') {
+        updateExpenseChart();
+      }
     }
 
     function showToast(message, duration = 3000) {
@@ -781,12 +1074,36 @@
       document.getElementById('loading').style.display = 'none';
     }
 
+    // Format Rupiah
+    function formatRupiah(input) {
+      let value = input.value.replace(/[^,\d]/g, '').toString();
+      let split = value.split(',');
+      let sisa = split[0].length % 3;
+      let rupiah = split[0].substr(0, sisa);
+      let ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+      
+      if (ribuan) {
+        let separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+      }
+      
+      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+      input.value = rupiah;
+    }
+
+    function unformatRupiah(value) {
+      return parseInt(value.replace(/[^,\d]/g, '').toString().replace('.', ''));
+    }
+
     function addTukang() {
       const div = document.createElement('div');
       div.className = 'tukang-row';
       div.innerHTML = `
         <input type="text" placeholder="Nama Tukang" class="tukang-nama">
-        <input type="number" placeholder="Upah/Hari (Rp)" class="tukang-upah" value="150000">
+        <div class="input-group">
+          <span class="input-prefix">Rp</span>
+          <input type="text" placeholder="Upah/Hari" class="tukang-upah input-with-prefix" value="150000" oninput="formatRupiah(this)">
+        </div>
         <input type="number" placeholder="Hari Kerja" class="tukang-hari" value="10">
         <button class="btn-remove" onclick="this.parentElement.remove()">
           <i class="fas fa-times"></i>
@@ -795,10 +1112,155 @@
       showToast('Tukang berhasil ditambahkan');
     }
 
+    function addExpense() {
+      const div = document.createElement('div');
+      div.className = 'expense-row';
+      div.innerHTML = `
+        <input type="date" class="date-input" value="${new Date().toISOString().split('T')[0]}">
+        <input type="text" placeholder="Deskripsi Pengeluaran" class="expense-desc">
+        <div class="input-group">
+          <span class="input-prefix">Rp</span>
+          <input type="text" placeholder="Jumlah" class="amount-input input-with-prefix" oninput="formatRupiah(this)">
+        </div>
+        <select class="expense-category">
+          <option value="material">Material</option>
+          <option value="tukang">Upah Tukang</option>
+          <option value="alat">Peralatan</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <button class="btn-remove" onclick="this.parentElement.remove(); updateExpenseSummary(); updateExpenseChart();">
+          <i class="fas fa-times"></i>
+        </button>`;
+      document.getElementById('expense-list').appendChild(div);
+      
+      // Add event listeners to new inputs
+      div.querySelector('.amount-input').addEventListener('input', updateExpenseSummary);
+      div.querySelector('.expense-category').addEventListener('change', updateExpenseChart);
+      
+      showToast('Pengeluaran berhasil ditambahkan');
+    }
+
+    function updateExpenseSummary() {
+      let totalExpenses = 0;
+      
+      document.querySelectorAll('.expense-row').forEach(row => {
+        const amount = unformatRupiah(row.querySelector('.amount-input').value) || 0;
+        totalExpenses += amount;
+      });
+      
+      const remaining = totalBudget - totalExpenses;
+      
+      document.getElementById('budget-total').textContent = `Rp ${totalBudget.toLocaleString('id-ID')}`;
+      document.getElementById('expense-used').textContent = `Rp ${totalExpenses.toLocaleString('id-ID')}`;
+      document.getElementById('budget-remaining').textContent = `Rp ${remaining.toLocaleString('id-ID')}`;
+      
+      // Update remaining budget color
+      const remainingElement = document.getElementById('budget-remaining');
+      remainingElement.parentElement.className = remaining >= 0 ? 'summary-item positive' : 'summary-item negative';
+    }
+
+    function filterExpenses() {
+      const categoryFilter = document.getElementById('expense-category-filter').value;
+      const dateFilter = document.getElementById('expense-date-filter').value;
+      const today = new Date();
+      
+      document.querySelectorAll('.expense-row').forEach(row => {
+        let show = true;
+        
+        // Category filter
+        if (categoryFilter && row.querySelector('.expense-category').value !== categoryFilter) {
+          show = false;
+        }
+        
+        // Date filter
+        if (show && dateFilter) {
+          const expenseDate = new Date(row.querySelector('.date-input').value);
+          
+          if (dateFilter === '7') {
+            const weekAgo = new Date(today);
+            weekAgo.setDate(today.getDate() - 7);
+            if (expenseDate < weekAgo) show = false;
+          } else if (dateFilter === '30') {
+            const monthAgo = new Date(today);
+            monthAgo.setDate(today.getDate() - 30);
+            if (expenseDate < monthAgo) show = false;
+          }
+        }
+        
+        row.style.display = show ? 'flex' : 'none';
+      });
+    }
+
+    function updateExpenseChart() {
+      const categoryTotals = {
+        material: 0,
+        tukang: 0,
+        alat: 0,
+        lainnya: 0
+      };
+      
+      document.querySelectorAll('.expense-row').forEach(row => {
+        if (row.style.display === 'none') return;
+        
+        const category = row.querySelector('.expense-category').value;
+        const amount = unformatRupiah(row.querySelector('.amount-input').value) || 0;
+        categoryTotals[category] += amount;
+      });
+      
+      const ctx = document.getElementById('expense-chart-canvas').getContext('2d');
+      
+      if (expenseChart) {
+        expenseChart.destroy();
+      }
+      
+      expenseChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Material', 'Upah Tukang', 'Peralatan', 'Lainnya'],
+          datasets: [{
+            data: [
+              categoryTotals.material,
+              categoryTotals.tukang,
+              categoryTotals.alat,
+              categoryTotals.lainnya
+            ],
+            backgroundColor: [
+              '#FFC107',
+              '#4CAF50',
+              '#2196F3',
+              '#F44336'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  label += 'Rp ' + context.raw.toLocaleString('id-ID');
+                  return label;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
     function resetForm() {
       if (confirm("⚠️ Hapus semua data saat ini dan reset form?")) {
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-        document.getElementById('hasil').innerHTML = '<p>Klik "Hitung Rencana & Biaya" untuk memulai perencanaan.</p>';
+        document.getElementById('hasil').innerHTML = '<p>Klik <strong>"Hitung Rencana & Biaya"</strong> untuk memulai perencanaan.</p>';
         localStorage.removeItem('holton-laporan');
         showToast('Form berhasil direset');
       }
@@ -811,6 +1273,17 @@
         showToast('Masukkan nama proyek terlebih dahulu!');
         return;
       }
+
+      // Collect expense data
+      const expenses = [];
+      document.querySelectorAll('.expense-row').forEach(row => {
+        expenses.push({
+          date: row.querySelector('.date-input').value,
+          desc: row.querySelector('.expense-desc').value,
+          amount: row.querySelector('.amount-input').value,
+          category: row.querySelector('.expense-category').value
+        });
+      });
 
       const data = {
         nama,
@@ -827,9 +1300,10 @@
         pekerjaan: URUTAN_PRIORITAS.filter(k => document.getElementById(k)?.checked),
         tukang: Array.from(document.querySelectorAll('.tukang-row')).map(row => ({
           nama: row.querySelector('.tukang-nama').value,
-          upah: row.querySelector('.tukang-upah').value,
+          upah: unformatRupiah(row.querySelector('.tukang-upah').value),
           hari: row.querySelector('.tukang-hari').value
-        }))
+        })),
+        expenses: expenses
       };
 
       const proyekLama = JSON.parse(localStorage.getItem('holton-proyek') || '{}');
@@ -893,7 +1367,10 @@
           div.className = 'tukang-row';
           div.innerHTML = `
             <input type="text" placeholder="Nama Tukang" class="tukang-nama" value="${t.nama || ''}">
-            <input type="number" placeholder="Upah/Hari (Rp)" class="tukang-upah" value="${t.upah || 150000}">
+            <div class="input-group">
+              <span class="input-prefix">Rp</span>
+              <input type="text" placeholder="Upah/Hari" class="tukang-upah input-with-prefix" value="${t.upah || 150000}" oninput="formatRupiah(this)">
+            </div>
             <input type="number" placeholder="Hari Kerja" class="tukang-hari" value="${t.hari || 10}">
             <button class="btn-remove" onclick="this.parentElement.remove()">
               <i class="fas fa-times"></i>
@@ -901,6 +1378,41 @@
           document.getElementById('tukang-list').appendChild(div);
         });
       }
+
+      // Reset & set expenses
+      document.getElementById('expense-list').innerHTML = '';
+      if (data.expenses && data.expenses.length > 0) {
+        data.expenses.forEach(e => {
+          const div = document.createElement('div');
+          div.className = 'expense-row';
+          div.innerHTML = `
+            <input type="date" class="date-input" value="${e.date}">
+            <input type="text" placeholder="Deskripsi Pengeluaran" class="expense-desc" value="${e.desc}">
+            <div class="input-group">
+              <span class="input-prefix">Rp</span>
+              <input type="text" placeholder="Jumlah" class="amount-input input-with-prefix" value="${e.amount}" oninput="formatRupiah(this)">
+            </div>
+            <select class="expense-category">
+              <option value="material" ${e.category === 'material' ? 'selected' : ''}>Material</option>
+              <option value="tukang" ${e.category === 'tukang' ? 'selected' : ''}>Upah Tukang</option>
+              <option value="alat" ${e.category === 'alat' ? 'selected' : ''}>Peralatan</option>
+              <option value="lainnya" ${e.category === 'lainnya' ? 'selected' : ''}>Lainnya</option>
+            </select>
+            <button class="btn-remove" onclick="this.parentElement.remove(); updateExpenseSummary(); updateExpenseChart();">
+              <i class="fas fa-times"></i>
+            </button>`;
+          document.getElementById('expense-list').appendChild(div);
+          
+          // Add event listeners to loaded inputs
+          div.querySelector('.amount-input').addEventListener('input', updateExpenseSummary);
+          div.querySelector('.expense-category').addEventListener('change', updateExpenseChart);
+        });
+      } else {
+        addExpense();
+      }
+      
+      updateExpenseSummary();
+      updateExpenseChart();
 
       showToast(`📂 Proyek "${nama}" berhasil dimuat!`);
     }
@@ -960,20 +1472,24 @@
         // Biaya tukang
         let totalTukang = 0;
         document.querySelectorAll('.tukang-row').forEach(row => {
-          const upah = parseFloat(row.querySelector('.tukang-upah').value) || 0;
+          const upah = unformatRupiah(row.querySelector('.tukang-upah').value) || 0;
           const hari = parseFloat(row.querySelector('.tukang-hari').value) || 0;
           totalTukang += upah * hari;
         });
 
         const total = totalMaterial + totalTukang;
+        totalBudget = total; // Set global budget variable
         const biayaHarian = total / durasiRencana;
+
+        // Update expense summary with new budget
+        updateExpenseSummary();
 
         // Skema kerja
         const skemaKerja = URUTAN_PRIORITAS
           .filter(k => document.getElementById(k)?.checked)
           .map((k, i) => `${i + 1}. ${dataPekerjaan[k].nama}`);
 
-        // Bangun laporan
+        // Bangun laporan dengan struktur yang benar
         let laporan = `
           <h3>📊 Ringkasan Proyek — Holton Konstruksi</h3>
           <p><strong>Nama Proyek:</strong> ${document.getElementById('nama-proyek').value || 'Belum dinamai'}</p>
@@ -1045,6 +1561,7 @@
 
         document.getElementById('hasil').innerHTML = laporan;
         localStorage.setItem('holton-laporan', laporan);
+        
         hideLoading();
         showToast('Perhitungan estimasi selesai!');
         
@@ -1066,13 +1583,104 @@
 
       const namaProyek = document.getElementById('nama-proyek').value.trim() || 'laporan_renovasi';
       const safeName = namaProyek.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+      
+      // Get expense data for the report
+      const expenses = [];
+      document.querySelectorAll('.expense-row').forEach(row => {
+        expenses.push({
+          date: row.querySelector('.date-input').value,
+          desc: row.querySelector('.expense-desc').value,
+          amount: row.querySelector('.amount-input').value,
+          category: row.querySelector('.expense-category').value
+        });
+      });
+      
+      // Calculate expense totals by category
+      const expenseTotals = {
+        material: 0,
+        tukang: 0,
+        alat: 0,
+        lainnya: 0
+      };
+      
+      expenses.forEach(e => {
+        const amount = unformatRupiah(e.amount) || 0;
+        expenseTotals[e.category] += amount;
+      });
+      
+      // Create expense summary table
+      let expenseTable = `
+        <div class="card">
+          <h3>💰 Ringkasan Pengeluaran Aktual</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Kategori</th>
+                <th>Jumlah</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Material</td>
+                <td>Rp ${expenseTotals.material.toLocaleString('id-ID')}</td>
+              </tr>
+              <tr>
+                <td>Upah Tukang</td>
+                <td>Rp ${expenseTotals.tukang.toLocaleString('id-ID')}</td>
+              </tr>
+              <tr>
+                <td>Peralatan</td>
+                <td>Rp ${expenseTotals.alat.toLocaleString('id-ID')}</td>
+              </tr>
+              <tr>
+                <td>Lainnya</td>
+                <td>Rp ${expenseTotals.lainnya.toLocaleString('id-ID')}</td>
+              </tr>
+              <tr>
+                <td><strong>Total Pengeluaran</strong></td>
+                <td><strong>Rp ${(expenseTotals.material + expenseTotals.tukang + expenseTotals.alat + expenseTotals.lainnya).toLocaleString('id-ID')}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="card">
+          <h3>📋 Detail Pengeluaran</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Deskripsi</th>
+                <th>Kategori</th>
+                <th>Jumlah</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      
+      expenses.forEach(e => {
+        expenseTable += `
+          <tr>
+            <td>${e.date}</td>
+            <td>${e.desc}</td>
+            <td>${e.category.charAt(0).toUpperCase() + e.category.slice(1)}</td>
+            <td>Rp ${unformatRupiah(e.amount).toLocaleString('id-ID')}</td>
+          </tr>
+        `;
+      });
+      
+      expenseTable += `
+            </tbody>
+          </table>
+        </div>
+      `;
+      
       const fullHtml = `
         <!DOCTYPE html>
         <html>
         <head>
           <meta charset="UTF-8">
           <title>Laporan - ${namaProyek}</title>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
           <style>
             body { 
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -1185,6 +1793,7 @@
           <div class="container">
             <h1><i class="fas fa-file-export"></i> Laporan Renovasi — Holton Konstruksi</h1>
             ${laporan}
+            ${expenseTable}
           </div>
         </body>
         </html>
@@ -1202,6 +1811,9 @@
 
     // ========== INIT ==========
     muatDaftarProyek();
+    addExpense();
+    updateExpenseSummary();
+    updateExpenseChart();
   </script>
 </body>
 </html>
